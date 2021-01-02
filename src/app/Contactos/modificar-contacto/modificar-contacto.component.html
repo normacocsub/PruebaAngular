@@ -1,13 +1,14 @@
 <div class="container">
     <div>
         <header>
-            Modificar Contacto
+            <b> Modificar Contacto</b>
         </header>
         <form>
             <div class="col-md-8 container">
                 <div class="mb-3">
                     <label for="exampleInputId" class="form-label">Numero de Identificacion</label>
-                    <input type="text" class="form-control" [(ngModel)]='contacto.identificacion' id="identificacion" name="identificacion">
+                    <input type="text" class="form-control" [(ngModel)]='contacto.identificacion' id="identificacion"
+                        name="identificacion">
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputName" class="form-label">Nombre Completo</label>
@@ -21,16 +22,28 @@
 
                 <div class="mb-3">
                     <label for="exampleInputDireccion" class="form-label">Direccion</label>
-                    <input type="text" class="form-control" [(ngModel)]='contacto.direccion' id="direccion" name="direccion">
+                    <input type="text" class="form-control" [(ngModel)]='contacto.direccion' id="direccion"
+                        name="direccion">
                 </div>
 
                 <div class="mb-3">
                     <label for="exampleInputFecha" class="form-label">Fecha de Cumpleaños</label>
-                    <input type="date" class="form-control" [(ngModel)]='contacto.fecha' id="fecha" name="fecha">
                 </div>
-                
-                <button type="submit" (click)="guardar()" class="btn btn-primary">Guardar</button>
-                <button  class="btn btn-danger" type="reset">Cancelar</button>
+
+                <div class="row">
+                    <div class="col-xs-12 col-12 col-md-4 form-group">
+                        <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker [bsValue]="bsValue">
+                    </div>
+                    <div class="col-xs-12 col-12 col-md-3 form-group">
+                        <button class="btn btn-info" (click)="dp.toggle()" [attr.aria-expanded]="dp.isOpen"
+                            type="button"><img src="assets/imagenes/calendario.png" width="20px"></button>
+                    </div>
+                </div>
+                <div style="padding-top: 20px;">
+                    <button type="submit" (click)="guardar()" class="btn btn-primary">Guardar</button>
+                    <button class="btn btn-danger" type="reset">Cancelar</button>
+                </div>
+
             </div>
         </form>
     </div>

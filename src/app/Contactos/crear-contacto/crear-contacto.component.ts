@@ -14,28 +14,29 @@ import { Contacto } from '../models/contacto';
 export class CrearContactoComponent implements OnInit {
   contacto: Contacto;
   formGroup: FormGroup ;
+  bsValue: Date;
   constructor(private formBuilder: FormBuilder, private modalService: NgbModal, private contactoService: ContactoService, private router: Router) {
     this.contacto = new Contacto();
     this.formGroup = formBuilder.group({});
+    this.bsValue = new Date();
   }
 
   ngOnInit(): void {
     this.contacto = new Contacto();
     this.buildForm();
+    console.log('a');
   }
 
   private buildForm(){
     this.contacto = new Contacto();
     this.contacto.celular = '';
     this.contacto.direccion = '';
-    this.contacto.fecha = new Date();
     this.contacto.identificacion = '';
     this.contacto.nombre = '';
 
     this.formGroup = this.formBuilder.group({
       celular: [this.contacto.celular, [Validators.required]],
       direccion: [this.contacto.direccion, [Validators.required]],
-      fecha: [this.contacto.fecha, [Validators.required]],
       identificacion: [this.contacto.identificacion, [Validators.required]],
       nombre: [this.contacto.nombre, [Validators.required]]
     });
@@ -53,8 +54,8 @@ export class CrearContactoComponent implements OnInit {
   }
 
   guardar() {
-    console.log(this.contacto);
-    var date = this.contacto.fecha;
+    this.contacto = this.formGroup.value;
+    this.contacto.fecha = this.bsValue;
     this.contactoService.post(this.contacto).subscribe(result => {
       if (result != null) {
         const messageBox = this.modalService.open(ModalAlertComponent)

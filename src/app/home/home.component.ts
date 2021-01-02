@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   constructor(private contactoService: ContactoService) { }
 
   ngOnInit(): void {
+    console.log('a');
     this.contactos = [];
     if(this.contactoService.get() != null){
       this.contactos = this.contactoService.get();
@@ -28,7 +29,7 @@ export class HomeComponent implements OnInit {
     var fecha = new Date();
     var fecha3 = Date.parse(fecha1.toString());
     fecha.setTime(fecha3);
-    fecha.setDate(fecha.getDate() +1 );
+    //fecha.setDate(fecha.getDate() +1 );
     fecha2.setHours(0,0,0,0);
     fecha.setHours(0,0,0,0);
     if(fecha.getTime() == fecha2.getTime()){

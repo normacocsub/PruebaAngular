@@ -13,7 +13,9 @@ import { Contacto } from '../models/contacto';
 export class ModificarContactoComponent implements OnInit {
 
   contacto: Contacto;
-  constructor(private modalService: NgbModal,private router: Router, private routeActive: ActivatedRoute, private contactoService: ContactoService) { this.contacto = new Contacto(); }
+  bsValue: Date;
+  constructor(private modalService: NgbModal,private router: Router, private routeActive: ActivatedRoute, private contactoService: ContactoService) {
+  this.contacto = new Contacto(); this.bsValue =new Date();}
 
   ngOnInit(): void {
     this.contacto = new Contacto();
@@ -21,11 +23,14 @@ export class ModificarContactoComponent implements OnInit {
 
     this.contactoService.buscar(id).subscribe(result => {
       this.contacto = result;
+      this.bsValue =new Date(this.contacto.fecha);
+      this.bsValue.setDate(this.bsValue.getDate() + 1);
     })
 
   }
 
   guardar() {
+    this.contacto.fecha = this.bsValue;
     if(this.contacto.identificacion == '' || this.contacto.nombre == '' || this.contacto.celular == '' || this.contacto.direccion == ''){
           const messageBox = this.modalService.open(ModalAlertComponent)
           messageBox.componentInstance.title = "Resultado Operación";

@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +25,8 @@ import { ModalAlertComponent } from './@base/modal/modal-alert/modal-alert.compo
     ModalAlertComponent
   ],
   imports: [
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     FormsModule,
