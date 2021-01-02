@@ -1,0 +1,37 @@
+<div class="container">
+    <div>
+        <header>
+            Crear Contacto
+        </header>
+        <form>
+            <div class="col-md-8 container">
+                <div class="mb-3">
+                    <label for="exampleInputId" class="form-label">Numero de Identificacion</label>
+                    <input type="text" class="form-control" [(ngModel)]='contacto.identificacion' id="identificacion" name="identificacion">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputName" class="form-label">Nombre Completo</label>
+                    <input type="text" class="form-control" [(ngModel)]='contacto.nombre' id="nombre" name="nombre">
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputCel" class="form-label">Celular</label>
+                    <input type="text" class="form-control" [(ngModel)]='contacto.celular' id="celular" name="celular">
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputDireccion" class="form-label">Direccion</label>
+                    <input type="text" class="form-control" [(ngModel)]='contacto.direccion' id="direccion" name="direccion">
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputFecha" class="form-label">Fecha de Cumpleaños</label>
+                    <input type="date" class="form-control" [(ngModel)]='contacto.fecha' id="fecha" name="fecha">
+                </div>
+                
+                <button type="submit" (click)="guardar()" class="btn btn-primary">Guardar</button>
+                <button class="btn btn-danger" type="reset">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<div style="padding-top: 10px;" class="container">
+
+    <div>
+        <button [routerLink]="['/crearContacto']" class="btn btn-success" >
+            Nuevo Contacto 
+        </button>
+    </div>
+    <div *ngFor="let contacto of contactos;">
+        <div class="card border-success mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div style="padding-top: 20px;" class="col-md-4">
+                    <img src="assets/imagenes/directorio-telefonico.png" width="100px" height="100px">
+                </div>
+
+
+                <div class="col-md-8">
+                    <div class="card-body">
+                            <div>
+                                <h5 class="card-title">{{contacto.nombre}}</h5>
+                                <p class="card-text">{{contacto.celular}}</p>
+                                <p class="card-text"><small class="text-muted">{{contacto.fecha}}</small></p>
+    
+                            </div>
+                    </div>
+
+                    <div class="card-footer bg-transparent border-success">
+                        <div>
+                            <button routerLink = '/modificarContacto/{{contacto.identificacion}}' class="btn btn-primary"><img src="assets/imagenes/editar.png" height="30px" width="30px"></button>
+                            <button (click)="eliminar(contacto)" class="btn btn-danger"><img src="assets/imagenes/eliminar.png" height="30px" width="30px"></button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

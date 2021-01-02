@@ -1,0 +1,26 @@
+<div class="container col-md-5">
+    <div style="padding-top: 70px;">
+        <div class="card text-dark bg-light mb-3 " style="max-width: 18rem;">
+            <div class="card-header">Total Contactos</div>
+            <div class="card-body">
+                <h1 class="card-text">{{totalContactos}}</h1>
+            </div>
+        </div>
+        
+        
+        <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-header">Happy Birthday today</div>
+            <div class="card-body">
+                <h1 class="card-title">{{totalContactosCumpleano}}</h1>
+                
+            </div>
+        </div>
+
+        
+    </div>
+    <div class="container">
+        <div style="padding-top: 50px;">
+            <button [routerLink]="['/consultarContactos']"  class="col-md-8 btn btn-primary"> <img src="assets/imagenes/red.png" height="50px"> Mis Contactos</button>
+        </div>
+    </div>
+</div>
