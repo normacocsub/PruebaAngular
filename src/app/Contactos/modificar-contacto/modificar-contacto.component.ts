@@ -26,14 +26,21 @@ export class ModificarContactoComponent implements OnInit {
   }
 
   guardar() {
-    this.contactoService.modificar(this.contacto).subscribe(resutl => {
-      if(resutl != null){
-        const messageBox = this.modalService.open(ModalAlertComponent)
-        messageBox.componentInstance.title = "Resultado Operación";
-        messageBox.componentInstance.cuerpo = 'Contacto Modificado!!! :-)';
-        this.contacto = new Contacto();
-        this.router.navigate(['/consultarContactos']);
-      }
-    })
+    if(this.contacto.identificacion == '' || this.contacto.nombre == '' || this.contacto.celular == '' || this.contacto.direccion == ''){
+          const messageBox = this.modalService.open(ModalAlertComponent)
+          messageBox.componentInstance.title = "Resultado Operación";
+          messageBox.componentInstance.cuerpo = 'Error: No se permiten campos vacios !!! :-)';
+    }
+    else{
+      this.contactoService.modificar(this.contacto).subscribe(resutl => {
+        if(resutl != null){
+          const messageBox = this.modalService.open(ModalAlertComponent)
+          messageBox.componentInstance.title = "Resultado Operación";
+          messageBox.componentInstance.cuerpo = 'Contacto Modificado!!! :-)';
+          this.contacto = new Contacto();
+          this.router.navigate(['/consultarContactos']);
+        }
+      });
+    }
   }
 }

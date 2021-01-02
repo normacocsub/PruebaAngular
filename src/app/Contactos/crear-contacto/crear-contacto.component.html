@@ -3,33 +3,59 @@
         <header>
             Crear Contacto
         </header>
-        <form>
+        <form [formGroup]="formGroup">
             <div class="col-md-8 container">
                 <div class="mb-3">
                     <label for="exampleInputId" class="form-label">Numero de Identificacion</label>
-                    <input type="text" class="form-control" [(ngModel)]='contacto.identificacion' id="identificacion" name="identificacion">
+                    <input type="text" class="form-control"
+                    [ngClass]="{'is-invalid': control?.identificacion?.errors && control?.identificacion?.touched}"
+                    formControlName="identificacion" id="identificacion" name="identificacion">
+                    <div *ngIf="control?.identificacion?.errors" class="invalid-feedback">
+                        <div *ngIf="control?.identificacion?.errors?.required">Se requiere la identificacion</div>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputName" class="form-label">Nombre Completo</label>
-                    <input type="text" class="form-control" [(ngModel)]='contacto.nombre' id="nombre" name="nombre">
+                    <input type="text" class="form-control"
+                    [ngClass]="{'is-invalid': control?.nombre?.errors && control?.nombre?.touched}"
+                    formControlName="nombre" id="nombre" name="nombre">
+                    <div *ngIf="control?.nombre?.errors" class="invalid-feedback">
+                        <div *ngIf="control?.nombre?.errors?.required">Se requiere el nombre</div>
+                    </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="exampleInputCel" class="form-label">Celular</label>
-                    <input type="text" class="form-control" [(ngModel)]='contacto.celular' id="celular" name="celular">
+                    <input type="text" class="form-control"
+                    [ngClass]="{'is-invalid': control?.celular?.errors && control?.celular?.touched}"
+                    formControlName="celular" id="celular" name="celular">
+                    <div *ngIf="control?.celular?.errors" class="invalid-feedback">
+                        <div *ngIf="control?.celular?.errors?.required">Se requiere el celular</div>
+                    </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="exampleInputDireccion" class="form-label">Direccion</label>
-                    <input type="text" class="form-control" [(ngModel)]='contacto.direccion' id="direccion" name="direccion">
+                    <input type="text" class="form-control" 
+                    [ngClass]="{'is-invalid': control?.direccion?.errors && control?.direccion?.touched}"
+                    formControlName="direccion" id="direccion" name="direccion">
+                    <div *ngIf="control?.direccion?.errors" class="invalid-feedback">
+                        <div *ngIf="control?.direccion?.errors?.required">Se requiere la direccion</div>
+                    </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="exampleInputFecha" class="form-label">Fecha de Cumpleaños</label>
-                    <input type="date" class="form-control" [(ngModel)]='contacto.fecha' id="fecha" name="fecha">
+                    <input type="date" class="form-control" 
+                    [ngClass]="{'is-invalid': control?.fecha?.errors && control?.fecha?.touched}"
+                    formControlName="fecha" id="fecha" name="fecha">
+                    <div *ngIf="control?.fecha?.errors" class="invalid-feedback">
+                        <div *ngIf="control?.fecha?.errors?.required">Se requiere la fecha</div>
+                    </div>
                 </div>
                 
-                <button type="submit" (click)="guardar()" class="btn btn-primary">Guardar</button>
+                <button type="submit" (click)="onSubmit()"
+                [disabled]="formGroup?.invalid" class="btn btn-primary">Guardar</button>
                 <button class="btn btn-danger" type="reset">Cancelar</button>
             </div>
         </form>

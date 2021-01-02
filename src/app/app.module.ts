@@ -7,7 +7,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { CrearContactoComponent } from './Contactos/crear-contacto/crear-contacto.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConsultarContactosComponent } from './Contactos/consultar-contactos/consultar-contactos.component';
 import { ModificarContactoComponent } from './Contactos/modificar-contacto/modificar-contacto.component';
 import { ModalAlertComponent } from './@base/modal/modal-alert/modal-alert.component';
@@ -26,6 +26,7 @@ import { ModalAlertComponent } from './@base/modal/modal-alert/modal-alert.compo
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent, pathMatch: 'full'}
     ]),
