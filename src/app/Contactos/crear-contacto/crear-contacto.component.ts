@@ -33,12 +33,14 @@ export class CrearContactoComponent implements OnInit {
     this.contacto.direccion = '';
     this.contacto.identificacion = '';
     this.contacto.nombre = '';
+    this.contacto.fecha = new Date();
 
     this.formGroup = this.formBuilder.group({
       celular: [this.contacto.celular, [Validators.required]],
       direccion: [this.contacto.direccion, [Validators.required]],
       identificacion: [this.contacto.identificacion, [Validators.required]],
-      nombre: [this.contacto.nombre, [Validators.required]]
+      nombre: [this.contacto.nombre, [Validators.required]],
+      fecha: [this.contacto.fecha, [Validators.required]]
     });
   }
 
@@ -55,7 +57,7 @@ export class CrearContactoComponent implements OnInit {
 
   guardar() {
     this.contacto = this.formGroup.value;
-    this.contacto.fecha = this.bsValue;
+    //this.contacto.fecha = this.bsValue;
     this.contactoService.post(this.contacto).subscribe(result => {
       if (result != null) {
         const messageBox = this.modalService.open(ModalAlertComponent)

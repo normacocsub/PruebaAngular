@@ -32,7 +32,14 @@ export class HomeComponent implements OnInit {
     //fecha.setDate(fecha.getDate() +1 );
     fecha2.setHours(0,0,0,0);
     fecha.setHours(0,0,0,0);
-    if(fecha.getTime() == fecha2.getTime()){
+
+    var mes1 = fecha.getMonth();
+    var mes2 = fecha2.getMonth();
+    var dia1 = fecha.getDate();
+    var dia2 = fecha2.getDate();
+
+
+    if(mes1 == mes2 && dia1 == dia2){
       return true;
     }
     else{

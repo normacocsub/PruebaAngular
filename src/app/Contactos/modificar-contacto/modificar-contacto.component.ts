@@ -20,14 +20,18 @@ export class ModificarContactoComponent implements OnInit {
   ngOnInit(): void {
     this.contacto = new Contacto();
     const id = this.routeActive.snapshot.params.numero;
-
+    console.log('a');
     this.contactoService.buscar(id).subscribe(result => {
       this.contacto = result;
       this.bsValue =new Date(this.contacto.fecha);
-      this.bsValue.setDate(this.bsValue.getDate() + 1);
     })
 
   }
+
+  onValueChange(value: Date): void {
+    this.bsValue = value;
+  }
+
 
   guardar() {
     this.contacto.fecha = this.bsValue;
